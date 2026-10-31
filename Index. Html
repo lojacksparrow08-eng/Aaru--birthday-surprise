@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For Aarya 🎀</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;
+ display:grid;place-items:center;
+ background:linear-gradient(135deg,#ffe1ed,#fff7fa);
+ font-family:Arial,sans-serif;color:#873d5c;
+ padding:20px;text-align:center
+}
+.card{
+ width:100%;max-width:420px;background:white;
+ padding:28px 22px;border-radius:25px;
+ box-shadow:0 12px 35px #b85b7a25
+}
+h1{color:#d65f91}
+button{
+ display:block;width:100%;padding:15px;margin:12px 0;
+ border:0;border-radius:14px;background:#e982a9;
+ color:white;font-size:16px;font-weight:bold;
+ cursor:pointer
+}
+button:active{transform:scale(.98)}
+#content{margin-top:20px}
+</style>
+</head>
+<body>
+<div class="card">
+<div style="font-size:48px">🎀🌷🎂</div>
+<h1>A Little Surprise!</h1>
+<p>Hey Aarya, someone has prepared something special for you.</p>
+<div id="content">
+<button id="start">OPEN YOUR SURPRISE ❤️</button>
+</div>
+</div>
+<script>
+const questions=[
+ {q:"Pick your favourite birthday treat!",a:["Cake 🎂","Chocolates 🍫","Ice cream 🍦"]},
+ {q:"Choose your happy place!",a:["Garden 🌸","Beach 🌊","Mountains 🏔️"]},
+ {q:"What makes life beautiful?",a:["Memories 📸","Friendship 💗","Happiness ✨"]}
+];
+let current=0;
+const content=document.getElementById("content");
+
+function showQuestion(){
+ const item=questions[current];
+ content.innerHTML="<h2>"+item.q+"</h2>";
+ item.a.forEach(answer=>{
+  const b=document.createElement("button");
+  b.textContent=answer;
+  b.addEventListener("click",()=>{
+   current++;
+   if(current<questions.length) showQuestion();
+   else showFinal();
+  });
+  content.appendChild(b);
+ });
+}
+function showFinal(){
+ content.innerHTML=`
+ <div style="font-size:55px">🎉💐💖</div>
+ <h1>HAPPY BIRTHDAY AARYA!</h1>
+ <p>May your life always be filled with happiness,
+ laughter, success and beautiful memories.</p>
+ <p>Keep smiling and keep shining! 🌷</p>
+ <h2>From Aamaan ❤️</h2>`;
+}
+document.getElementById("start").addEventListener("click",()=>{
+ current=0;
+ showQuestion();
+});
+</script>
+</body>
+</html>
